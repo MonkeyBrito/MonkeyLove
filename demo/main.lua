@@ -1,4 +1,4 @@
-local MonkeyLove = require "lib.monkeylove"
+local MonkeyLove = require "monkeylove"
 
 local SW, SH = love.graphics.getDimensions()
 local image = love.graphics.newImage('Boton200x50.png')

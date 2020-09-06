@@ -44,7 +44,7 @@ function Analog:initialize(Ar, Right, Ax, Ay, Br, Bd, BBy, Spring, Reclick, Limi
 	self.size = Ar or 50
 	self.button =  Br or self.size/2
 	self.deadzone = Bd or 0 --Range from 0 to 1
-	self.bby = BBy or self.button --OffSet of Bunding Box Y. Range 0 to ScreenHeight/2(positive) or 0 to self.size(negative).
+	self.bby = BBy or self.button --OffSet of Bounding Box Y. Range 0 to ScreenHeight/2(positive) or 0 to self.size(negative).
 	
 	self.right = Right or false
 	

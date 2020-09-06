@@ -1,0 +1,43 @@
+#Creado por HugoBDesigner
+#Modificado por EduardoBrito
+
+Andralog - Stick analogico para Android.
+
+Para cargarlo y usarlo simplemente 'require' el archivo "andralog" como lo haces con cualquier otro. Luego, asignale una variable:
+	'myAnalog = newAnalog(x, y, r, b, d)'
+		'x' es el centro X del analogo.
+		'y' es el centro Y del analogo.
+		'r' es el radio del analogo.
+		'b' es el radio del stick/boton.
+		'd' es el deadzone del analogo. Varía de 0 a 1, siendo que en 0 no hay deadzone y en 1 todo el analogo es deadzone.
+
+Estos son los callbacks que requiere para funcionar:
+	'myAnalog.update(dt)' en 'love.update'
+	'myAnalog.draw()' en 'love.draw'
+	'myAnalog.touchPressed(id, x, y, dx, dy, pressure)' en 'love.touchPressed'
+	'myAnalog.touchReleased(id, x, y, dx, dy, pressure)' en 'love.touchReleased'
+	'myAnalog.touchMoved(id, x, y, dx, dy, pressure)' en 'love.touchMoved'
+
+Estas son las variables que puedes cambiar despues de crear tu stick analogico:
+	'myAnalog.spring' - Configurado a true, el stick analogico regresa al centro despues de ser soltado. Configurado a false, permanece en el lugar y mantiene el movimiento de salida (output). Por defecto true.
+	'myAnalog.reclick' - Configurado a true, puedes atrapar el stick despues de soltarlo antes de que llegue al centro (con 'spring' activado). Configurado a false, el stick solo puede ser sujetado otra vez cuando llegue al centro. Por defecto true.
+	'myAnalog.limitedRange' - Configurado a true, no cambia el angulo del stick si lo mueves fuera de su radio de efecto. Configurado a false, se mueve alrededor como si estubiera siendo movido dentro de su radio de efecto. Por defecto false.
+	'myAnalog.rangeRelease' - Configurado a true, libera el stick una vez lo muevas fuera de su radio de efecto (con 'spring' activado). Configurado a false, continua tomando acciones basado en la configuracion anterior. Por defecto false.
+	'myAnalog.pressure' - Define la presion minima basado en la sensibilidad del touchscreen requerida para mover el stick. Algunos touchscreens no tienen sensibilidad de presion, asi que este valor se auto configura a 1. Por defecto 0.5.
+	'myAnalog.releaseSpeed' - Define el tiempo (en segundos) que le toma al stick llegar al centro una vez soltado (with spring on). Por defecto 0.2.
+	'myAnalog.hitboxStick' - Nuevo parametro modificar el hitbox del stick, y de esa manera hacer el control mas comodo. Originalmente poseia el mismo valor que el radio del stick/boton. Por defecto es el doble que el orignal.
+	--Por los momentos es el doble...
+	
+Finalmente, las funciones que puedes usar para obtener informacion de los controles:
+	'myAnalog.getX()' - Retorna un numero desde -1 a 1 con respecto a la direccion horizontal del stick.
+	'myAnalog.getY()' - Retorna un numero desde -1 a 1 con respecto a la direccion vertical del stick.
+	'myAnalog.isHeld()' - Retorna true o false dependiendo si el stick esta siendo presionado o no, respectivamente.
+
+Siempre puedes reemplazar la function draw() de la manera que prefieras. Esta ya incluye 3 functions para adornarlo ("Small Useful Functions").
+Puedes mover tus dedos lejos del centro del analogo.
+No tienes que tocarlo o mantener tus dedos sobre el.
+Soporta multitouch.
+Soporta tener 2 o mas analogos trabajando individualmente el uno del otro.
+Fue hecho especificamente para LÖVE Android, pero contiene un pequeño convertidor de mouse input a controles touch.
+
+LICENSE: https://creativecommons.org/licenses/by-sa/3.0/

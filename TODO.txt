@@ -1,0 +1,28 @@
+"TODO"
+
+Analog:
+	·Change id for true?.
+	·Option of change the analog limit from a circle to rounded square. 
+	·Customizable colors?
+	·ASK FOR HELP. Resolution problem in Android Fullscree mode.
+		·DPI functions (love.graphics.getDimensions()) does not show the right values in Fullscreen.
+		·Then repair Bounding Box.
+Gamepad:
+	·ASK FOR HELP. Resolution problem in Android Fullscree mode.
+		·DPI functions (love.graphics.getDimensions()) does not show the right values in Fullscreen.
+		·Then repair buttons positions.
+Button:
+
+Slider:
+	·Make the Min Value configurable. For that is needed reformat the module.
+ProgressBar:
+
+EditText:
+	·Fix non filter characters causing Error:"UTF-8 decoding error: Not enought space"
+	·Expand Limit of characters. No really necesary. Limit = Line Width. 
+	--
+	·Movable cursor with touch.
+	·Fix for non-Android Devices.
+Spinner:
+	·Make the table optional, so it can be used as a regular counter.
+Tools:

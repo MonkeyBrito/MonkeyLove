@@ -1,0 +1,173 @@
+MonkeyLove
+==========
+
+	GUI library for Löve (http://love2d.org) for Android Devices.
+	Have been only tested in LÖVE [11.3]. No guarantee it will work on other versions.
+
+Modules
+=======
+	
+	[Button] = A customizable button.
+	
+		--Create a button instance.
+		newButton = Button:new(image,w,h,x,y,label,onClick,normal,pressed,toggled,onToggle,labelToggled,font,onRelease,update)
+			image: Previously loaded image or Path to load a new one. If this argument is nil, then will be create a rectangle instead
+			w,h: Width and height of the rectangle if is not used a image. Else make them nil. 
+			x,y: Position X and Y of the Button in the screen.
+			label: Label of the button.
+			onClick: Callback of the button(function).
+			normal,pressed,toggled: Button color if not pressed, if pressed and in toggled state respectively.
+			onToggle: Callback of the button in toggled state(function). If nil toggled will be disabled.
+			labelToggled: Label when its in toggled state.
+			font: Previously loaded font. 
+			onRelease: Callback when the button is released(function). Not fully tested.
+			update: Callback of the button every update(function). Not fully tested.
+		--Enable/Disable a button instance.
+		newButton:toggleEnabled() 
+		
+	[EditText] = A text input.
+	
+		--Create a EditText instance.
+		newEditText = EditText:new(x,y,w,align,font,lineColor,focusColor,fontColor,callback,customtext,filter)
+			x,y: Position X and Y of the EditText in the screen.
+			w: Width of the line(max width of the input text).
+			align: Align of the text('left', 'center', or 'right').
+			font: Previously loaded font. 
+			lineColor,focusColor,fontColor: Line color in normal state, line color in focus state and font color respectively.
+			callback: Callback when 'return' key is pressed(function).
+			customtext: Text already entered.
+			filter: String with all allowed characters.
+		--Enable/Disable a EditText instance.
+		newEditText:toggleEnabled() 
+		
+	[ProgressBar] = A multi-uses progress bar.
+	
+		--Create a ProgressBar instance.
+		newProgressBar = ProgressBar:new(x,y,maxw,h,maxv,minv,text1,text2,font,barColor,fontColor,notFilled,minw)
+			x,y: Position X and Y of the ProgressBar in the screen.
+			maxw: Width of the progress bar.
+			h: Height of the progress bar.
+			maxv: Max printed value. Set to 100.
+			minv: Min printed value. Set to 0.
+			text1: Text before printed value.
+			text2: Text after printed value.
+			font: Previously loaded font. 
+			barColor,fontColor,notFilled: Bar color, font color and bar not filled color respectively. 
+			minw: Start position of the increment Bar. Set to 0. Not used.
+		--Icrease the value in ProgressBar instance.
+		newProgressBar:IncreaseProgress(inc)
+		--Pauses/Resume a ProgressBar instance.
+		newProgressBar:togglePaused()
+		
+	[Slider] = A slider.
+	
+		--Create a Slider instance.
+		newSlider = Slider:new(x,y,w,max,cursor,radius,normal,alpha)
+			x,y: Position X and Y of the Slider in the screen.
+			w: Width of the Slider.
+			max: Max representable value of the slider.
+			cursor: Cursor custom position.
+			radius: Radius of the cursor.
+			normal,alpha: Slider color and guide rectangle color respectively. 
+		--Return the current value of the Slider instance.
+		newSlider:cursorValue()
+		--Enable/Disable a Slider instance.
+		newSlider:toggleEnabled()
+		
+	[Stepper] = A stepper for toggle options.
+	
+		--Create a Slider instance.
+		newStepper = Stepper:new(x,y,w,h,lLabel,rLabel,max,selections,step,loop,separation,custom,font,normal,pressed)
+			x,y: Position X and Y of the Stepper in the screen.
+			w,h: Width and height of the Stepper. The width does not include the width of the buttons(width of button = height of button).
+			lLabel,rLabel: Left button label and right button label respectively.
+			max: Max number of selections/value.
+			selections: Table with selections/options for toggle. 
+			step: Number of steps taken by the Stepper each time a buttn is pressed.
+			loop: (Boolean) If is true then the stepper will move in loop. 
+			separation: Separation between Buttons and selection/value label.
+			custom: Preselected value.
+			font: Previously loaded font. 
+			normal: Normal color of the buttons and selection box.
+			pressed: Buttons pressed color. 
+		--Enable/Disable a Slider instance.
+		newStepper:toggleEnabled()
+		--Return the current selection/value of the Stepper instance.
+		newStepper:currentSelection()
+		
+	[Tools] = Useful multipurpose functions.
+		--Draw a customizable label, vertically centered given a height. For more info see [love.graphics.printf()]
+		setLabel(text,font,x,y,limit,height,align,r,sx,sy,ox,oy,kx,ky)
+		--Load and set a '.ttf' font located in 'assets/font'.
+		--[!!!]Don't use this function inside of draw or update, because can cause slow downs.
+		setFont(name, size)
+		--Allow to use web notation of colors.(0-255, alpha default to 255).
+		rgb(r, g, b, a)
+		--Return(table). Return grayscale color, 0=Black y 1=White. Alpha defaults to 1.
+		grayscale(level, alpha)
+		--Return(table), of a already preset color. Alpha defaults to 1. For more info see [Colors.png]
+		colors(color, alpha)
+	
+Installation
+============
+
+	First Copy the "monkeylove" lua file and the folder with the same name into the directory of your project. 
+	Next require it in your main(or leading file in your project):
+	
+		local MonkeyLove = require 'path_to_file.monkeylove'
+		
+	Where "path_to_file" is the directory where you put "monkeylove" folder and lua file.
+	Finally, in love's callbacks add:
+	
+		function love.update(dt)
+			MonkeyLove:update(dt)
+		end
+
+		function love.draw()
+			MonkeyLove:draw()
+		end
+
+		function love.textinput(text)
+			MonkeyLove:textinput(text)
+		end
+
+		function love.keypressed(key,scancode,isrepeat)
+			MonkeyLove:keypressed(key,scancode,isrepeat)
+		end
+
+		function love.touchpressed(id,x,y)
+			MonkeyLove:touchpressed(id,x,y)
+		end
+
+		function love.touchmoved(id,x,y)
+			MonkeyLove:touchmoved(id,x,y)
+		end
+
+		function love.touchreleased(id,x,y)
+			MonkeyLove:touchreleased(id,x,y)
+		end
+		
+	[!!!]This Library use some globals for convenience. More info below.
+
+Globals
+=======
+
+	--Global Variables:
+	class       = "init.lua" (Module)
+	Tools       = "init.lua" (Module)
+	Button      = "init.lua" (Class Module)
+	EditText    = "init.lua" (Class Module)
+	ProgressBar = "init.lua" (Class Module)
+	Slider      = "init.lua" (Class Module)
+	Spinner     = "init.lua" (Class Module)
+
+	--Global Functions:
+	defaultLineWidth()    = "tools.lua"
+	isInsideBoundingBox() = "tools.lua"
+	getFontYOffset()      = "tools.lua"
+	setLabel()            = "tools.lua"
+	setFont()             = "tools.lua"
+	rgb()                 = "tools.lua"
+	grayscale()           = "tools.lua"
+	colors()              = "tools.lua"
+

@@ -77,8 +77,6 @@ Px, Py | Position X and Y of the formation center of frontal buttons. Not change
 Font | Previously loaded font.
 Mode | Mode of circle draw. Default to "fill".
 
-![Demo of GamepadD-pad](docs/screenshots/DemoGamepadD-pad.png)![Demo of Gamepad4Buttons](docs/screenshots/DemoGamepad4Buttons.png)
-
 Value | Buttons names
 --- | ---
 Number = 1 | Gamepad.B
@@ -86,6 +84,12 @@ Number = 2 | Gamepad.B, Gamepad.A
 Number = 3 | Gamepad.B, Gamepad.A, Gamepad.X
 Number = 4 | Gamepad.B, Gamepad.A, Gamepad.X, Gamepad.Y
 D_pad = true | Gamepad.DOWN, Gamepad.RIGHT, Gamepad.UP, Gamepad.LEFT
+
+Buttons formation.
+![Demo of Gamepad4Buttons](docs/screenshots/DemoGamepad4Buttons.png)
+
+D-pad.
+![Demo of GamepadD-pad](docs/screenshots/DemoGamepadD-pad.png)
 
 Return true or false about whether or not the gamepad button is being held.
 ```

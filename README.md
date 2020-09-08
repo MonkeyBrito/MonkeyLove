@@ -1,31 +1,34 @@
 # MonkeyLove
 GUI and gamepad library for [LÖVE](http://love2d.org) for Android Devices.
-Have been only tested in LÖVE [11.3]. No guarantee it will work on other versions.
-
+Have been only tested in [LÖVE 11.3]. No guarantee it will work on other versions.
 ![Demo of MonkeyLove](docs/screenshots/DemoMonkeyLove.png)
+
 **This Library use some globals for convenience.** More info below.
 
 ## Modules
 ### Analog
-A customizable analog stick. Can be static or not static.
-
+A customizable analog stick. 
+Can be not static or static.
 ![Demo of Analog](docs/screenshots/DemoAnalog.png)
+
 Create a analog instance:
 ``` [Lua]
 newAnalog = Analog:new(Ar, Right, Ax, Ay, Br, Bd, BBy, Spring, Reclick, Limited, Range, Release, Hitbox)
 ```
-* Ar: Analog radius.
-* Right: If true and is not static, the stick will be in the right-side of the screen.
-* Ax, Ay: Position X and Y of the Analog in the screen if is static. If Ax and Ay are nil, the analog will be a static one.
-* Br: Button of the stick radius. Default to Ar/2.
-* Bd: Stick deadzone. Range between 0 and 1. Default to 0.
-* BBy: OffSet of Bounding Box Y. Used only if the stick is not static. Range 0 to ScreenHeight/2.
-* Spring: If true, the analog stick returns to the center after being released. If false, stays in place and retains movement output. Default to true.
-* Reclick: If true, you can catch the stick after being released before it reaches the center (with spring on). If false, the stick can only be grabbed again once it reaches the center. Default to true.
-* Limited: If true, does not change the stick's angle if you move it further than its effect radius. If false, moves it around as if it was being moved within its effect radius. Default to false.
-* Range: If true, releases the stick once you move it further than its effect radius (with spring on). If false, continues taking actions based on the previous setting. Default to false.
-* Release: Defines the time (in seconds) it takes for the stick to reach the center once released (with spring on). Default to 0.2.
-* Hitbox:
+Arg | Explanation
+--- | ---
+Ar | Analog radius.
+Right | If true and is not static, the stick will be in the right-side of the screen.
+Ax, Ay | Position X and Y of the Analog in the screen if is static. If Ax and Ay are nil, the analog will be a static one.
+Br | Button of the stick radius. Default to Ar/2.
+Bd | Stick deadzone. Range between 0 and 1. Default to 0.
+BBy | OffSet of Bounding Box Y. Used only if the stick is not static. Range 0 to ScreenHeight/2.
+Spring | If true, the analog stick returns to the center after being released. If false, stays in place and retains movement output. Default to true.
+Reclick | If true, you can catch the stick after being released before it reaches the center (with spring on). If false, the stick can only be grabbed again once it reaches the center. Default to true.
+Limited | If true, does not change the stick's angle if you move it further than its effect radius. If false, moves it around as if it was being moved within its effect radius. Default to false.
+Range | If true, releases the stick once you move it further than its effect radius (with spring on). If false, continues taking actions based on the previous setting. Default to false.
+Release | Defines the time (in seconds) it takes for the stick to reach the center once released (with spring on). Default to 0.2.
+Hitbox | Radius of the stick's hitbox. Default to Ar.
 
 Return X position of the stick. Range from -1 to 1.
 ``` [Lua]
@@ -45,42 +48,44 @@ newAnalog:toggleEnabled()
 ```
 ### Gamepad 
 A customizable gamepad.
-
 ![Demo of Gamepad](docs/screenshots/DemoGamepad.png)
-Create a gamepad button instance.
 
+Create a gamepad button instance.
 ![Demo of GamepadButton](docs/screenshots/DemoGamepadButton.png)
 ```
 GPButton = Gamepad:new(Radius,X,Y,Label,Normal,Pressed,Font,Mode)
 ```
-* Radius: Radius of the button.
-* X,Y: Position X and Y of the button.
-* Label: Label of the gamepad button.
-* Normal,Pressed: Button color if not pressed and if pressed respectively.
-* Font: Previously loaded font.
-* Mode: Mode of circle draw. Default to "fill".
+Arg | Explanation
+--- | ---
+Radius | Radius of the button.
+X,Y | Position X and Y of the button.
+Label | Label of the gamepad button.
+Normal,Pressed | Button color if not pressed and if pressed respectively.
+Font | Previously loaded font.
+Mode | Mode of circle draw. Default to "fill".
 
 Create a preset gamepad instance. The Default buttons names are: Gamepad.B, Gamepad.A, Gamepad.X, Gamepad.Y, Gamepad.DOWN, Gamepad.RIGHT, Gamepad.UP, Gamepad.LEFT.
 ```
 Gamepad:setGamepad(Radius, Number, D_pad, Px, Py, Font, Mode)
 ```
-* Radius: Radius of all buttons.
-* Number: Number of frontal buttons. Range between 1 and 4. The Default buttons names are: Gamepad.B, Gamepad.A, Gamepad.X, Gamepad.Y.
-
-![Demo of Gamepad4Buttons](docs/screenshots/DemoGamepad4Buttons.png)
-
-Number | Buttons names
+Arg | Explanation
 --- | ---
-1 | Gamepad.B
-2 | Gamepad.B, Gamepad.A
-3 | Gamepad.B, Gamepad.A, Gamepad.X
-4 | Gamepad.B, Gamepad.A, Gamepad.X, Gamepad.Y
+Radius | Radius of all buttons.
+Number | Number of frontal buttons. Range between 1 and 4. For the Default buttons names, see below.
+D_pad | If true will be draw a D-pad. For the Default buttons names, see below. Gamepad.DOWN, Gamepad.RIGHT, Gamepad.UP, Gamepad.LEFT.
+Px, Py | Position X and Y of the formation center of frontal buttons. Not change the D-pad position.
+Font | Previously loaded font.
+Mode | Mode of circle draw. Default to "fill".
 
-* D_pad: If true will be draw a D-pad. The Default buttons names are: Gamepad.DOWN, Gamepad.RIGHT, Gamepad.UP, Gamepad.LEFT.
-![Demo of GamepadD-pad](docs/screenshots/DemoGamepadD-pad.png)
-* Px, Py: Position X and Y of the formation center of frontal buttons. Not change the D-pad position.
-* Font: Previously loaded font.
-* Mode: Mode of circle draw. Default to "fill".
+![Demo of GamepadD-pad](docs/screenshots/DemoGamepadD-pad.png)![Demo of Gamepad4Buttons](docs/screenshots/DemoGamepad4Buttons.png)
+
+Value | Buttons names
+--- | ---
+Number = 1 | Gamepad.B
+Number = 2 | Gamepad.B, Gamepad.A
+Number = 3 | Gamepad.B, Gamepad.A, Gamepad.X
+Number = 4 | Gamepad.B, Gamepad.A, Gamepad.X, Gamepad.Y
+D_pad = true | Gamepad.DOWN, Gamepad.RIGHT, Gamepad.UP, Gamepad.LEFT
 
 Return true or false about whether or not the gamepad button is being held.
 ```

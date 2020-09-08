@@ -71,7 +71,7 @@ function EditText:initialize(x,y,w,align,font,lineColor,focusColor,fontColor,cal
 	self.disabledColor = grayscale(0.2)
 --	self.boxColor = grayscale(32/255)
 	
-	self.filter = filter or ' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789ÑñÁáÉéÍíÓóÚúÖöÜü'
+	self.filter = filter or ' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789ÑñÁáÉéÍíÓóÚúÖöÜü¡!¿?'
 	
 	self.enabled = true
 	self.focus = false

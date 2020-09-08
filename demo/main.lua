@@ -11,9 +11,9 @@ local B1X, B1Y = SW - 200, 5
 local B2X, B2Y = 5, 5
 local LX1, LY1, LX2, LY2 = SW/2 - limit1/2, 5, SW/2 - limit2/2, 45
 local ETX, ETY, ETW = 35, 75, SW/2 - 75
-local PBX, PBY, PBW = 10, 140, SW/2 - 20
+local PBX, PBY, PBW = 10, 130, SW/2 - 20
 local SDX, SDY, SDW = SW/2 + 100, 90, SW/2 - 200
-local SPX, SPY, SPW, SPH = SW/2 + 76, 140, SW/2 - 152, 50
+local SPX, SPY, SPW, SPH = SW/2 + 76, 130, SW/2 - 152, 50
 local options = {'Option 1', 'Option 2', 'Option 3'}
 --local Ar, AX, AY = 50, SW, SH-25
 

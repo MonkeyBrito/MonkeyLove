@@ -430,3 +430,5 @@ setFont() | tools.lua
 rgb() | tools.lua
 grayscale() | tools.lua
 colors() | tools.lua
+
+For more info, see the example Demo.

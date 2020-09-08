@@ -6,6 +6,7 @@ Have been only tested in [LÖVE 11.3]. No guarantee it will work on other versio
 **This Library use some globals for convenience.** More info below.
 
 ## Modules
+
 ### Analog
 A customizable analog stick. 
 Can be not static or static.
@@ -46,6 +47,7 @@ Enable/Disable a button instance.
 ```
 newAnalog:toggleEnabled()
 ```
+
 ### Gamepad 
 A customizable gamepad.
 ![Demo of Gamepad](docs/screenshots/DemoGamepad.png)
@@ -72,7 +74,7 @@ Arg | Explanation
 --- | ---
 Radius | Radius of all buttons.
 Number | Number of frontal buttons. Range between 1 and 4. For the Default buttons names, see below.
-D_pad | If true will be draw a D-pad. For the Default buttons names, see below. Gamepad.DOWN, Gamepad.RIGHT, Gamepad.UP, Gamepad.LEFT.
+D_pad | If true will be draw a D-pad. For the Default buttons names, see below.
 Px, Py | Position X and Y of the formation center of frontal buttons. Not change the D-pad position.
 Font | Previously loaded font.
 Mode | Mode of circle draw. Default to "fill".
@@ -107,72 +109,84 @@ Enable/Disable all gamepad buttons.
 ```
 Gamepad:toggleEnabled() 
 ```
+
 ### Button
 A customizable rectangular button.
-
 ![Demo of Button](docs/screenshots/DemoButton.png)
+
 Create a button instance.
 ```
 Button = Button:new(image, w, h, x, y, label, onClick, normal, pressed, toggled, onToggle, labelToggled, font, onRelease, update)
 ```
-* image: Previously loaded image or Path to load a new one. If this argument is nil, then will be create a rectangle instead
-* w, h: Width and height of the rectangle if is not used a image. Else make them nil. 
-* x, y: Position X and Y of the Button in the screen.
-* label: Label of the button.
-* onClick: Callback of the button(function).
-* normal, pressed, toggled: Button color if not pressed, if pressed and in toggled state respectively.
-* onToggle: Callback of the button in toggled state(function). If nil toggled will be disabled.
-![Demo of ToggleButton](docs/screenshots/DemoToggleButton.png)
-* labelToggled: Label when its in toggled state.
-* font: Previously loaded font. 
-* onRelease: Callback when the button is released(function). Not fully tested.
-* update: Callback of the button every update(function). Not fully tested.
+Arg | Explanation
+--- | ---
+image | ExplanationPreviously loaded image or Path to load a new one. If this argument is nil, then will be create a rectangle instead
+w, h | Width and height of the rectangle if is not used a image. Else make them nil. 
+x, y | Position X and Y of the Button in the screen.
+label | Label of the button.
+onClick | Callback of the button(function).
+normal, pressed, toggled | Button color if not pressed, if pressed and in toggled state respectively.
+onToggle | Callback of the button in toggled state(function). If nil toggled will be disabled.
+labelToggled | Label when its in toggled state.
+font | Previously loaded font. 
+onRelease | Callback when the button is released(function). Not fully tested.
+update | Callback of the button every update(function). Not fully tested.
 
 Enable/Disable a button instance.
 
-![Demo of DisabledButton](docs/screenshots/DemoDisabledButton.png)
 ```
 newButton:toggleEnabled() 
 ```
+Button in Toggled state.
+![Demo of ToggleButton](docs/screenshots/DemoToggleButton.png)
+
+Button in Disabled state.
+![Demo of DisabledButton](docs/screenshots/DemoDisabledButton.png)
+
 ### EditText
 A text input.
-
 ![Demo of EditText](docs/screenshots/DemoEditText.png)
+
 Create a EditText instance.
 ```
 newEditText = EditText:new(x, y, w, align, font, lineColor, focusColor, fontColor, callback, customtext, filter)
 ```
-* x,y: Position X and Y of the EditText in the screen.
-* w: Width of the line(max width of the input text).
-* align: Align of the text("left", "center", or "right").
-* font: Previously loaded font. 
-* lineColor,focusColor,fontColor: Line color in normal state, line color in focus state and font color respectively.
-* callback: Callback when "*return*" key is pressed(function).
-* customtext: Text already entered.
-* filter: String with all allowed characters.
+Arg | Explanation
+--- | ---
+x, y | Position X and Y of the EditText in the screen.
+w | Width of the line(max width of the input text).
+align | Align of the text("left", "center", or "right").
+font | Previously loaded font. 
+lineColor, focusColor, fontColor | Line color in normal state, line color in focus state and font color respectively.
+callback | Callback when *"return"* key is pressed(function).
+customtext | Text already entered.
+filter | String with all allowed characters.
 
 Enable/Disable a EditText instance.
 ```
 newEditText:toggleEnabled()
 ```
+
 ### ProgressBar
 A multi-uses progress bar.
-
 ![Demo of ProgressBar](docs/screenshots/DemoProgressBar.png)
+
 Create a ProgressBar instance.
 ```
 newProgressBar = ProgressBar:new(x, y, maxw, h, maxv, minv, text1, text2, font, barColor, fontColor, notFilled, minw)
 ```
-* x,y: Position X and Y of the ProgressBar in the screen.
-* maxw: Width of the progress bar.
-* h: Height of the progress bar.
-* maxv: Max printed value. Set to 100.
-* minv: Min printed value. Set to 0.
-* text1: Text before printed value.
-* text2: Text after printed value.
-* font: Previously loaded font. 
-* barColor,fontColor,notFilled: Bar color, font color and bar not filled color respectively. 
-* minw: Start position of the increment Bar. Set to 0. Not used.
+Arg | Explanation
+--- | ---
+x, y | Position X and Y of the ProgressBar in the screen.
+maxw | Width of the progress bar.
+h | Height of the progress bar.
+maxv | Max printed value. Set to 100.
+minv | Min printed value. Set to 0.
+text1 | Text before printed value.
+text2 | Text after printed value.
+font | Previously loaded font. 
+barColor,fontColor,notFilled | Bar color, font color and bar not filled color respectively. 
+minw | Start position of the increment Bar. Set to 0. Not used.
 
 Icrease the value in ProgressBar instance.
 ```
@@ -182,20 +196,23 @@ Pauses/Resume a ProgressBar instance.
 ```
 newProgressBar:togglePaused()
 ```
+
 ### Slider
 A slider.
-
 ![Demo of Slider](docs/screenshots/DemoSlider.png)
+
 Create a Slider instance.
 ```
 newSlider = Slider:new(x, y, w, max, cursor, radius, normal, alpha)
 ```
-* x,y: Position X and Y of the Slider in the screen.
-* w: Width of the Slider.
-* max: Max representable value of the slider.
-* cursor: Cursor custom position.
-* radius: Radius of the cursor.
-* normal,alpha: Slider color and guide rectangle color respectively. 
+Arg | Explanation
+--- | ---
+x,y | Position X and Y of the Slider in the screen.
+w | Width of the Slider.
+max | Max representable value of the slider.
+cursor | Cursor custom position.
+radius | Radius of the cursor.
+normal,alpha | Slider color and guide rectangle color respectively. 
 
 Return the current value of the Slider instance.
 ```
@@ -205,26 +222,29 @@ Enable/Disable a Slider instance.
 ```
 newSlider:toggleEnabled()
 ```
+
 ### Stepper
 A stepper for toggle options.
-
 ![Demo of Stepper](docs/screenshots/DemoStepper.png)
+
 Create a Slider instance.
 ```
 newStepper = Stepper:new(x, y, w, h, lLabel, rLabel, max, selections, step, loop, separation, custom, font, normal, pressed)
 ```
-* x,y: Position X and Y of the Stepper in the screen.
-* w,h: Width and height of the Stepper. The width does not include the width of the buttons(width of button = height of stepper).
-* lLabel,rLabel: Left button label and right button label respectively.
-* max: Max number of selections/value.
-* selections: Table with selections/options for toggle. 
-* step: Number of steps taken by the Stepper each time a button is pressed.
-* loop: (Boolean) If is true then the stepper will move in loop. 
-* separation: Separation between Buttons and selection/value label.
-* custom: Preselected value.
-* font: Previously loaded font. 
-* normal: Normal color of the buttons and selection box.
-* pressed: Buttons pressed color. 
+Arg | Explanation
+--- | ---
+x, y | Position X and Y of the Stepper in the screen.
+w, h | Width and height of the Stepper. The width does not include the width of the buttons(width of button = height of stepper).
+lLabel, rLabel | Left button label and right button label respectively.
+max | Max number of selections/value.
+selections | Table with selections/options for toggle. 
+step | Number of steps taken by the Stepper each time a button is pressed.
+loop | (Boolean) If is true then the stepper will move in loop. 
+separation | Separation between Buttons and selection/value label.
+custom | Preselected value.
+font | Previously loaded font. 
+normal | Normal color of the buttons and selection box.
+pressed | Buttons pressed color. 
 
 Enable/Disable a Slider instance.
 ```
@@ -234,6 +254,7 @@ Return the current selection/value of the Stepper instance.
 ```
 newStepper:currentSelection()
 ```
+
 ### Tools
 Useful multipurpose functions.
 
@@ -253,12 +274,13 @@ Return(number). Angle in radians given 2 points.
 ```
 getAngle(x2, y2, x1, y1)
 ```
-Draw a customizable label, vertically centered given a height. For more info see [love.graphics.printf](http://love2d.org/wiki/love.graphics.printf)
-
+Draw a customizable label, vertically centered given a height.
 ![Demo of Label](docs/screenshots/DemoLabel.png)
 ```
 setLabel(text, font, x, y, limit, height, align, r, sx, sy, ox, oy, kx, ky)
 ```
+For more info see [love.graphics.printf](http://love2d.org/wiki/love.graphics.printf)
+
 Load and set a ".ttf" font located in "assets/font".
 [!!!]Don't use this function inside of draw or update, because can cause slow downs.
 ```
@@ -314,29 +336,31 @@ function love.touchreleased(id, x, y)
 end
 ```
 ## Globals
+
 ### Global Variables:
 Variable | Module
 --- | ---
-class | "init.lua" (Module)
-Tools | "init.lua" (Module)
-Analog | "init.lua" (Class Module)
-Gamepad | "init.lua" (Class Module)
-Button | "init.lua" (Class Module)
-EditText | "init.lua" (Class Module)
-ProgressBar | "init.lua" (Class Module)
-Slider | "init.lua" (Class Module)
-Stepper | "init.lua" (Class Module)
+class | init.lua
+Tools | init.lua
+Analog | init.lua (Class Module)
+Gamepad | init.lua (Class Module)
+Button | init.lua (Class Module)
+EditText | init.lua (Class Module)
+ProgressBar | init.lua (Class Module)
+Slider | init.lua (Class Module)
+Stepper | init.lua (Class Module)
+
 ### Global Variables:
 Variable | Module
 --- | ---
-cdefaultLineWidth() | "tools.lua"
-isInsideBoundingBox() | "tools.lua"
-isInsideCircle() | "tools.lua"
-getAngle() | "tools.lua"
-getDistance() | "tools.lua"
-getFontYOffset() | "tools.lua"
-setLabel() | "tools.lua"
-setFont() | "tools.lua"
-rgb() | "tools.lua"
-grayscale() | "tools.lua"
-colors() | "tools.lua"
+cdefaultLineWidth() | tools.lua
+isInsideBoundingBox() | tools.lua
+isInsideCircle() | tools.lua
+getAngle() | tools.lua
+getDistance() | tools.lua
+getFontYOffset() | tools.lua
+setLabel() | tools.lua
+setFont() | tools.lua
+rgb() | tools.lua
+grayscale() | tools.lua
+colors() | tools.lua
